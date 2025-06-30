@@ -1,0 +1,67 @@
+name: Check
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Register or restore cache
+        uses: actions/cache@v4
+        with:
+          key: ${{hashFiles('deno.lock', 'pnpm-lock.yaml')}}
+          path: |
+            ./dist
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.x
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23.x
+          cache: pnpm
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: 2.x
+
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: 2.0.6 # Use exact version to ensure local and ci have same version
+
+      - name: Install dependencies
+        run: |
+          pnpm install
+          deno install --entrypoint test
+
+      - name: Build project
+        run: deno task build
+
+      - name: Lint & format with Biome
+        run: biome ci src test
+
+      - name: Test with Deno
+        run: deno test test
+
+      - name: Save artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: ./dist
