@@ -6,7 +6,7 @@ export default defineConfig(() => ({
 	birthday: new Date(2003, 6, 29),
 	bloodType: "A+",
 	instructions:
-		"Unresponsive verbally and physically during cataplectic episode. Lay on back or side to open airways. Do not use smelling salts. Trapezius Squeeze can occasionally return responsitivity.",
+		"Has non-epileptic seizures, becoming unresponsive verbally and physically. This is NOT a medical emergency. Only contact emergency services if the seizure has lasted more than 45 minutes or if other injuries were sustained. Do not use smelling salts. Trapezius Squeeze can occasionally return responsitivity.",
 	meds: [
 		{
 			name: "Fluoxetine",
@@ -16,38 +16,25 @@ export default defineConfig(() => ({
 		},
 	],
 	conditions: [
-		{ name: "Cataplexy", highPriority: true },
+		{ name: "Functional Neurological Disorder", highPriority: true },
+		{ name: "Non-Epileptic Seizures (PNES)", highPriority: true },
 		{ name: "Generalized Anxiety", highPriority: true },
-		{ name: "Depression" },
-		{ name: "Attention Deficit Disorder" },
+		{ name: "Persistent Depressive Disorder" },
+		{ name: "Avoidant Restrictive Food Intake Disorder (ARFID)" },
 	],
 	allergies: [
-		{
-			kind: "material",
-			name: "Liquid Latex",
-			effects: "skin irritation, rash",
-		},
 		{
 			kind: "food",
 			name: "Pomegranates",
 			effects: "anaphylaxis",
 		},
-		{
-			kind: "food",
-			name: "Peaches",
-			effects: "mouth irritation, sore throat, runny nose",
-		},
-		{
-			kind: "material",
-			name: "Pollen",
-			effects: "runny nose, skin irritation, rash",
-		},
+	
 	],
 	surgeries: [
-		{ name: "Wisdom tooth extraction", administeredOn: new Date(2019, 1, 1) },
+		{ name: "Wisdom tooth extraction", administeredOn: new Date(2019, 10, 11) },
 	],
 	vaccinations: [{ name: "tetanus", administeredOn: new Date(2003, 1, 1) }],
-	providers: [{ name: "mike", specialty: "health", phone: "(910)000-0000" }],
+	providers: [{ name: "N/A", specialty: "N/A", phone: "(000)000-0000" }],
 	insurance: [
 		{
 			name: "TRICare East - Humana",
