@@ -28,7 +28,6 @@ export default defineConfig(() => ({
 			name: "Pomegranates",
 			effects: "anaphylaxis",
 		},
-	
 	],
 	surgeries: [
 		{ name: "Wisdom tooth extraction", administeredOn: new Date(2019, 10, 11) },
